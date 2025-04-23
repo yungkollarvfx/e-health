@@ -1,0 +1,8 @@
+# render.yaml
+services:
+  - type: web
+    name: ehealthportal
+    env: docker
+    repo: https://github.com/yungkollarvfx/E-HeathPortal
+    plan: free
+    autoDeploy: true

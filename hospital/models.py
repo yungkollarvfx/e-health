@@ -14,27 +14,25 @@ class HospitalAdmin(models.Model):
 class Hospital(models.Model):
     
     hos_Choices = (
-            ('Taluk Headquarters Hospital', 'Taluk Headquarters Hospital'),
+            ('Berlin Headquarters Hospital', 'Berlin Headquarters Hospital'),
             ('Medical College Hospital', 'Medical College Hospital'),
             ('Family Health Center', 'Family Health Center'),
          
         )
     dct_Choices = (
-        ('Alappuzha', 'Alappuzha'),
-        ('Ernakulam', 'Ernakulam'),
-        ('Idukki', 'Idukki'),
-        ('Kannur', 'Kannur'),
-        ('Kasaragod', 'Kasaragod'),
-        ('Kollam', 'Kollam'),
-        ('Kottayam', 'Kottayam'),
-        ('Kozhikode', 'Kozhikode'),
-        ('Malappuram', 'Malappuram'),
-        ('Palakkad', 'Palakkad'),
-        ('Pathanamthitta', 'Pathanamthitta'),
-        ('Thiruvananthapuram', 'hiruvananthapuram'),
-        ('Thrissur', 'Thrissur'),
-        ('Wayanad', 'Wayanad'),
-      
+        ('Mitte', 'Mitte'),
+        ('Friedrichshain-Kreuzberg', 'Friedrichshain-Kreuzberg'),
+        ('Pankow', 'Pankow'),
+        ('Charlottenburg-Wilmersdorf', 'Charlottenburg-Wilmersdorf'),
+        ('Spandau', 'Spandau'),
+        ('Steglitz-Zehlendorf', 'Steglitz-Zehlendorf'),
+        ('Tempelhof-Schöneberg', 'Tempelhof-Schöneberg'),
+        ('Neukölln', 'Neukölln'),
+        ('Treptow-Köpenick', 'Treptow-Köpenick'),
+        ('Marzahn-Hellersdorf', 'Marzahn-Hellersdorf'),
+        ('Lichtenberg', 'Lichtenberg'),
+        ('Reinickendorf', 'Reinickendorf'),
+        
     )
 
     name = models.CharField(max_length=100,unique=True)
