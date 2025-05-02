@@ -1,0 +1,60 @@
+name: Django CI/CD Pipeline
+
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+
+    services:
+      postgres:
+        image: postgres:13
+        env:
+          POSTGRES_USER: postgres
+          POSTGRES_PASSWORD: postgres
+          POSTGRES_DB: ehealth_db
+        ports:
+          - 5432:5432
+
+    env:
+      DATABASE_URL: postgres://postgres:postgres@localhost:5432/ehealth_db
+      SECRET_KEY: ${{ secrets.SECRET_KEY }}
+      DEBUG: 'False'
+      ALLOWED_HOSTS: '.herokuapp.com'
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.10'
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+
+      - name: Run migrations
+        run: |
+          python manage.py migrate
+
+      - name: Run tests
+        run: |
+          python manage.py test
+
+      - name: Collect static files
+        run: |
+          python manage.py collectstatic --noinput
+
+      - name: Deploy to Heroku
+        uses: akhileshns/heroku-deploy@v3.12.12
+        with:
+          heroku_api_key: ${{ secrets.HEROKU_API_KEY }}
+          heroku_app_name: "ehealth-portal"
+          heroku_email: "nwanajuhenrychris@gmail.com"
