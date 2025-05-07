@@ -26,7 +26,7 @@ SECRET_KEY = '75!!x@cx7je71as%h-w#sxa@o1a)vsp)l9rwqoi*k_jk%69z2)'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['e-health-niwe.onrender.com', 'localhost', '127.0.0.1']
 
 
 # Application definition
